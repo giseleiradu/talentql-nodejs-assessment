@@ -1,0 +1,30 @@
+{
+  "name": "talentql-nodejs-assessment",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/giseleiradu/talentql-nodejs-assessment.git",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn run src/index.js",
+    "run-dev": "nodemon src/index.js --exec babel-node --presets @babel/preset-env"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.0",
+    "@babel/node": "^7.13.13",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.14.0",
+    "@babel/register": "^7.13.16",
+    "babel-node": "^0.0.1-security",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "http-errors": "^1.8.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "pg": "^8.6.0",
+    "sequelize": "^6.6.2"
+  }
+}
