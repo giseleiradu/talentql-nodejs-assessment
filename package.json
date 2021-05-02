@@ -5,8 +5,14 @@
   "repository": "https://github.com/giseleiradu/talentql-nodejs-assessment.git",
   "license": "MIT",
   "scripts": {
-    "start": "yarn run src/index.js",
-    "run-dev": "nodemon src/index.js --exec babel-node --presets @babel/preset-env"
+    "start": "concurrently \"yarn run db:migrate && yarn run db:seed\" \"babel-node src/index.js\"",
+    "run-dev": "concurrently \"yarn run db:seed\"  \"nodemon src/index.js --exec babel-node --presets @babel/preset-env\"",
+    "db:migrate": "NODE_ENV=development ./node_modules/.bin/sequelize db:migrate ",
+    "db:seed": "NODE_ENV=development ./node_modules/.bin/sequelize db:seed:all",
+    "db:migrate:undo:all": "NODE_ENV=development ./node_modules/.bin/sequelize db:migrate:undo:all",
+    "db:migrate:test": "NODE_ENV=test ./node_modules/.bin/sequelize db:migrate",
+    "db:migrate:seed:test": "NODE_ENV=test ./node_modules/.bin/sequelize db:seed:all",
+    "db:migrate:undo:all:test": "NODE_ENV=test ./node_modules/.bin/sequelize db:migrate:undo:all"
   },
   "dependencies": {
     "@babel/cli": "^7.13.16",
@@ -17,6 +23,7 @@
     "@babel/register": "^7.13.16",
     "babel-node": "^0.0.1-security",
     "body-parser": "^1.19.0",
+    "concurrently": "^6.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
@@ -25,6 +32,8 @@
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "pg": "^8.6.0",
-    "sequelize": "^6.6.2"
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0"
   }
 }
