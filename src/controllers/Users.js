@@ -33,7 +33,6 @@ export default class Users{
         return res.status(201).json({
             message:"successfully registered",
             newUser,
-            // token
         });
         } catch (error) {
             console.log(`error`, error)

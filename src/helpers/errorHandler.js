@@ -11,7 +11,7 @@ class errorHandler {
    * @param {*} res
    * @param {*} e
    * @returns {object} error
-   * @memberof Articles
+   * @memberof Posts
    */
   static errorResponse(res, e) {
     if (e.name === 'SequelizeValidationError') {
@@ -24,7 +24,7 @@ class errorHandler {
     if (e.message === 'Cannot read property \'length\' of null') {
       return res.status(404).json({
         status: 404,
-        message: 'Article not found'
+        message: 'Post not found'
       });
     }
 
@@ -41,7 +41,7 @@ class errorHandler {
 * @param {*} res
 * @param {*} e
 * @returns {object} error
-* @memberof Articles
+* @memberof Posts
 */
   static joiErrorResponse(res, e) {
     return res.status(400).json({
