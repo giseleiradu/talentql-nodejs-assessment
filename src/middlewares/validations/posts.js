@@ -34,10 +34,11 @@ const schema = {
       body: Joi.string().required().trim(),
     }
   }),
-  idParam: {
+
+  idParam: Joi.object().keys({
     id: Joi.number().required(),
     slug: Joi.string().required().trim(),
-  }
+  })
 };
 
 export default schema;

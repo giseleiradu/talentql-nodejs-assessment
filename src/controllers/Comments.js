@@ -29,7 +29,7 @@ class Comments {
         postId,
       };
       console.log(`comment`, comment)
-      const result = await Comments.create(comment);
+      const result = await Comment.create(comment);
       return res.status(201).json({
         status: 201,
         data: { comment: result }
@@ -37,7 +37,8 @@ class Comments {
     } catch (e) {
       errorHandler.errorResponse(res, e);
     }
-  }
+    }
+
   /**
      *
      *
@@ -194,6 +195,7 @@ class Comments {
      */
   static async like(req, res) {
     try {
+      console.log(`aha niho turi`, req.body)
       const postId = await checkSlug(req, res);
       if (typeof postId !== 'number') {
         return false;
@@ -229,8 +231,8 @@ class Comments {
       });
       const updateComment = await Comment.update(
         {
-          favorited: true,
-          favoritesCount: likes.count,
+          liked: true,
+          likeCounts: likes.count,
         },
         {
           where: { id, },
@@ -301,7 +303,7 @@ class Comments {
         if (likes.count > 0) {
           updateComment = await Comment.update(
             {
-              favoritesCount: likes.count,
+              likeCounts: likes.count,
             },
             {
               where: { id, },
@@ -312,8 +314,8 @@ class Comments {
         } else {
           updateComment = await Comment.update(
             {
-              favorited: false,
-              favoritesCount: likes.count,
+              liked: false,
+              likeCounts: likes.count,
             },
             {
               where: { id, },
