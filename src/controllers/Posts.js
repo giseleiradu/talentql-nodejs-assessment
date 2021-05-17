@@ -43,7 +43,6 @@ export default class Posts{
         const { id } = req.user;
         post.userId = id;
         post.slug = await Posts.createSlug(res, post.title);
-        console.log(`slug`, post.slug);
         const result = await Post.create(post);
         return res.status(201).json({
             status: 201,
