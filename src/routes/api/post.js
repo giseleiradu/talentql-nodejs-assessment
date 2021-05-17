@@ -10,7 +10,7 @@ const router = express.Router();
 router.post('/post', checkToken, validate(postSchema.create),Post.create);
 router.get('/post/:slug',Post.get);
 router.get('/post/:username/private', Post.getPrivatePosts);
-router.get('/all_posts',Post.getAll);
+router.get('/post/all_posts',Post.getAll);
 router.delete('/post/:slug', checkToken, Post.delete);
 router.put('/post/:slug', checkToken, validate(postSchema.update), Post.update);
 //liking and unliking
